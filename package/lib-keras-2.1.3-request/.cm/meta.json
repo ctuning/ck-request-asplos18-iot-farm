@@ -1,0 +1,44 @@
+{
+  "customize": {
+    "extra_dir": "", 
+    "install_env": {
+    }, 
+    "version": "2.1.3"
+  }, 
+  "deps": {
+    "python": {
+      "local": "yes", 
+      "name": "Python", 
+      "sort": 20, 
+      "tags": "compiler,python"
+    }
+  }, 
+  "end_full_path": {
+    "linux": "lib/keras/__init__.py", 
+    "win": "lib/keras/__init__.py"
+  }, 
+  "need_cpu_info": "yes", 
+  "only_for_host_os_tags": [
+    "linux", 
+    "windows"
+  ], 
+  "only_for_target_os_tags": [
+    "linux", 
+    "windows"
+  ], 
+  "package_extra_name": " (prebuilt, ReQuEST@ASPLOS'18 artifact)", 
+  "process_script": "install", 
+  "soft_uoa": "04698bcbc46c246f", 
+  "suggested_path": "keras-prebuilt", 
+  "tags": [
+    "lib", 
+    "keras",
+    "keras-tensorflow", 
+    "v2", 
+    "v2.1", 
+    "v2.1.3", 
+    "vprebuilt", 
+    "vpip", 
+    "channel-stable"
+  ]
+}
