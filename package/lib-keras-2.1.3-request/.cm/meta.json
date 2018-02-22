@@ -33,6 +33,7 @@
   "tags": [
     "lib", 
     "keras",
+    "keras-request",
     "keras-tensorflow", 
     "v2", 
     "v2.1", 
