@@ -19,18 +19,23 @@ def main():
 
     a=sys.argv
 
+    vgg_model = vgg16.VGG16(weights='imagenet')
+
     image=a[1]
 
     original = load_img(image, target_size=(224, 224))
     numpy_image = img_to_array(original)
     image_batch = np.expand_dims(numpy_image, axis=0)
 
-    alexnet_model = vgg16.VGG16(weights='imagenet')
+    processed_image = vgg16.preprocess_input(image_batch.copy())
+
+    predictions = vgg_model.predict(processed_image)
+
+    label = decode_predictions(predictions)
+    print (label)
 
     model = alexnet()
     test_x = np.random.rand(224, 224, 3)
-    x=model.predict(np.array([test_x]))
-    print (x)
     for _ in range(50):
         model.predict(np.array([test_x]))
 
