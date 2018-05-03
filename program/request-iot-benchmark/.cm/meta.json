@@ -13,6 +13,7 @@
     "benchmark-alexnet-single-device-cpu": {
       "ignore_return_code": "yes", 
       "run_time": {
+        "fine_grain_timer_file": "tmp-ck-timer.json", 
         "output_invariant_of_repeat": "yes", 
         "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../single-device/alexnet/predict.py", 
         "run_cmd_out1": "tmp-stdout.tmp", 
@@ -29,6 +30,7 @@
     "benchmark-alexnet-single-device-gpu": {
       "ignore_return_code": "yes", 
       "run_time": {
+        "fine_grain_timer_file": "tmp-ck-timer.json", 
         "output_invariant_of_repeat": "yes", 
         "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../single-device/alexnet/predict.py", 
         "run_cmd_out1": "tmp-stdout.tmp", 
@@ -42,6 +44,7 @@
     "benchmark-vgg16-single-device-cpu": {
       "ignore_return_code": "yes", 
       "run_time": {
+        "fine_grain_timer_file": "tmp-ck-timer.json", 
         "output_invariant_of_repeat": "yes", 
         "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../single-device/vgg16/predict.py", 
         "run_cmd_out1": "tmp-stdout.tmp", 
@@ -58,6 +61,7 @@
     "benchmark-vgg16-single-device-gpu": {
       "ignore_return_code": "yes", 
       "run_time": {
+        "fine_grain_timer_file": "tmp-ck-timer.json", 
         "output_invariant_of_repeat": "yes", 
         "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../single-device/vgg16/predict.py", 
         "run_cmd_out1": "tmp-stdout.tmp", 

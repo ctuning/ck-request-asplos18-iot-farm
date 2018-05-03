@@ -7,7 +7,8 @@ def vgg16():
     """
         Construct VGG16 model and return.
     """
-    image = Input(224, 224, 3)
+#    image = Input(224, 224, 3)
+    image = Input(shape=(224, 224, 3))
 
     # block 1
     layer = Conv2D(64, (3, 3), activation='relu', padding='same')(image)
