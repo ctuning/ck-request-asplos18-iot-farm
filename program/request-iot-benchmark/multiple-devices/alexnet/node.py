@@ -20,8 +20,7 @@ import model as ml
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 # read data packet format.
-PROTOCOL = protocol.parse(open('resource/image.avpr').read())
-
+PROTOCOL = protocol.parse(open('../avro/image.avpr').read())
 
 class Node(object):
     """
@@ -239,7 +238,14 @@ def main(cmd):
     node.debug = cmd.debug
 
     # read ip resources from config file
-    with open('resource/ip') as file:
+    ck_target_path=os.environ.get('CK_TARGET_PATH','')
+    if ck_target_path=='':
+       print ('ERROR: CK target is not specified')
+       exit(1)
+
+    ip_path=os.path.join(ck_target_path, 'ip')
+
+    with open(ip_path) as file:
         address = yaml.safe_load(file)
         node.ip['block2'] = Queue()
         node.ip['block3'] = Queue()

@@ -1,0 +1,82 @@
+{
+  "backup_data_uid": "88b118634abf9491", 
+  "data_name": "request-iot-benchmark", 
+  "no_compile": "yes", 
+  "no_target_file": "yes", 
+  "print_files_after_run": [
+    "tmp-stdout.tmp",
+    "tmp-stderr.tmp"
+  ], 
+  "process_in_tmp": "yes", 
+  "program": "yes", 
+  "run_cmds": {
+    "run-single-device-alexnet": {
+      "dataset_tags": [
+        "image",
+        "jpeg",
+        "dataset"
+      ],
+      "ignore_return_code": "no",
+      "ignore_return_code": "yes", 
+      "run_time": {
+        "output_invariant_of_repeat": "yes", 
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../single-device/alexnet/predict.py $#dataset_path#$$#dataset_filename#$", 
+        "run_cmd_out1": "tmp-stdout.tmp", 
+        "run_cmd_out2": "tmp-stderr.tmp", 
+        "run_output_files": [
+          "tmp-ck-timer.json", 
+          "tmp-ck-output.bin", 
+          "tmp-ck-output.json"
+        ]
+      }
+    },
+    "run-single-device-alexnet-vgg16": {
+      "dataset_tags": [
+        "image",
+        "jpeg",
+        "dataset"
+      ],
+      "ignore_return_code": "no",
+      "ignore_return_code": "yes", 
+      "run_time": {
+        "output_invariant_of_repeat": "yes", 
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../single-device/alexnet/predict.py $#dataset_path#$$#dataset_filename#$", 
+        "run_cmd_out1": "tmp-stdout.tmp", 
+        "run_cmd_out2": "tmp-stderr.tmp", 
+        "run_output_files": [
+          "tmp-ck-timer.json", 
+          "tmp-ck-output.bin", 
+          "tmp-ck-output.json"
+        ]
+      }
+    }
+  }, 
+  "run_deps": {
+    "lib-keras": {
+      "local": "yes", 
+      "name": "Keras library with ReQuEst artifact deps", 
+      "sort": 10, 
+      "tags": "lib,keras-request"
+    }, 
+    "lib-tensorflow": {
+      "local": "yes", 
+      "name": "TensorFlow library", 
+      "sort": 20, 
+      "tags": "lib,tensorflow"
+    }, 
+    "python": {
+      "local": "yes", 
+      "name": "python", 
+      "sort": 8, 
+      "tags": "compiler,lang-python,python"
+    }
+  }, 
+  "run_vars": {
+  }, 
+  "tags": [
+    "program", 
+    "request", 
+    "request-asplos18", 
+    "iot-farm" 
+  ]
+}

@@ -20,8 +20,7 @@ import model as ml
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 # read data packet format.
-PROTOCOL = protocol.parse(open('resource/image.avpr').read())
-
+PROTOCOL = protocol.parse(open('../avro/image.avpr').read())
 
 class Node(object):
     """
@@ -132,28 +131,12 @@ class Responder(ipc.Responder):
             try:
                 with node.graph.as_default():
                     bytestr = req['input']
-                    if req['next'] == 'block1':
-                        node.log('block1 gets data')
+                    if req['next'] == 'block12345':
+                        node.log('block12345 gets data')
                         X = np.fromstring(bytestr, np.uint8).reshape(224, 224, 3)
-                        node.model = ml.block1() if node.model is None else node.model
+                        node.model = ml.block12345() if node.model is None else node.model
                         output = node.model.predict(np.array([X]))
-                        node.log('finish block1 forward')
-                        Thread(target=self.send, args=(output, 'block234', req['tag'])).start()
-
-                    elif req['next'] == 'block234':
-                        node.log('block234 gets data')
-                        X = np.fromstring(bytestr, np.float32).reshape(112, 112, 64)
-                        node.model = ml.block234() if node.model is None else node.model
-                        output = node.model.predict(np.array([X]))
-                        node.log('finish block234 forward')
-                        Thread(target=self.send, args=(output, 'block5', req['tag'])).start()
-
-                    elif req['next'] == 'block5':
-                        node.log('block5 gets data')
-                        X = np.fromstring(bytestr, np.float32).reshape(14, 14, 512)
-                        node.model = ml.block5() if node.model is None else node.model
-                        output = node.model.predict(np.array([X]))
-                        node.log('finish block5 forward')
+                        node.log('finish block12345 forward')
                         for _ in range(2):
                             Thread(target=self.send, args=(output, 'fc1', req['tag'])).start()
 
@@ -162,7 +145,7 @@ class Responder(ipc.Responder):
                         X = np.fromstring(bytestr, np.float32).reshape(25088)
                         node.model = ml.fc1() if node.model is None else node.model
                         output = node.model.predict(np.array([X]))
-                        node.log('finish block6 forward')
+                        node.log('finish fc1 forward')
                         Thread(target=self.send, args=(output, 'fc2', req['tag'])).start()
 
                     elif req['next'] == 'fc2':
@@ -255,22 +238,19 @@ def main(cmd):
     node.debug = cmd.debug
 
     # read ip resources from config file
-    with open('resource/ip') as file:
+    ck_target_path=os.environ.get('CK_TARGET_PATH','')
+    if ck_target_path=='':
+       print ('ERROR: CK target is not specified')
+       exit(1)
+
+    ip_path=os.path.join(ck_target_path, 'ip')
+
+    with open(ip_path) as file:
         address = yaml.safe_load(file)
-        node.ip['block234'] = Queue()
-        node.ip['block5'] = Queue()
         node.ip['fc1'] = Queue()
         node.ip['fc2'] = Queue()
         node.ip['initial'] = Queue()
         address = address['node']
-        for addr in address['block234']:
-            if addr == '#':
-                break
-            node.ip['block234'].put(addr)
-        for addr in address['block5']:
-            if addr == '#':
-                break
-            node.ip['block5'].put(addr)
         for addr in address['fc1']:
             if addr == '#':
                 break

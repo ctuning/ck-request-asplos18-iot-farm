@@ -10,22 +10,117 @@
   "process_in_tmp": "yes", 
   "program": "yes", 
   "run_cmds": {
-    "run-single-device-alexnet": {
-      "dataset_tags": [
-        "image",
-        "jpeg",
-        "dataset"
-      ],
-      "ignore_return_code": "no",
+    "benchmark-alexnet-single-device-cpu": {
       "ignore_return_code": "yes", 
       "run_time": {
         "output_invariant_of_repeat": "yes", 
-        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../single-device/alexnet/predict.py $#dataset_path#$$#dataset_filename#$", 
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../single-device/alexnet/predict.py", 
         "run_cmd_out1": "tmp-stdout.tmp", 
         "run_cmd_out2": "tmp-stderr.tmp", 
         "run_output_files": [
           "tmp-ck-timer.json", 
-          "tmp-ck-output.bin", 
+          "tmp-ck-output.json"
+        ],
+        "run_set_env2":{
+          "CUDA_VISIBLE_DEVICES":""
+        }
+      }
+    },
+    "benchmark-alexnet-single-device-gpu": {
+      "ignore_return_code": "yes", 
+      "run_time": {
+        "output_invariant_of_repeat": "yes", 
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../single-device/alexnet/predict.py", 
+        "run_cmd_out1": "tmp-stdout.tmp", 
+        "run_cmd_out2": "tmp-stderr.tmp", 
+        "run_output_files": [
+          "tmp-ck-timer.json", 
+          "tmp-ck-output.json"
+        ]
+      }
+    },
+    "benchmark-vgg16-single-device-cpu": {
+      "ignore_return_code": "yes", 
+      "run_time": {
+        "output_invariant_of_repeat": "yes", 
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../single-device/vgg16/predict.py", 
+        "run_cmd_out1": "tmp-stdout.tmp", 
+        "run_cmd_out2": "tmp-stderr.tmp", 
+        "run_output_files": [
+          "tmp-ck-timer.json", 
+          "tmp-ck-output.json"
+        ],
+        "run_set_env2":{
+          "CUDA_VISIBLE_DEVICES":""
+        }
+      }
+    },
+    "benchmark-vgg16-single-device-gpu": {
+      "ignore_return_code": "yes", 
+      "run_time": {
+        "output_invariant_of_repeat": "yes", 
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../single-device/vgg16/predict.py", 
+        "run_cmd_out1": "tmp-stdout.tmp", 
+        "run_cmd_out2": "tmp-stderr.tmp", 
+        "run_output_files": [
+          "tmp-ck-timer.json", 
+          "tmp-ck-output.json"
+        ]
+      }
+    },
+    "benchmark-alexnet-farm-5-nodes-start-server": {
+      "ignore_return_code": "yes", 
+      "run_time": {
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../multiple-devices/alexnet/node.py" 
+      }
+    },
+    "benchmark-alexnet-farm-5-nodes": {
+      "ignore_return_code": "yes", 
+      "run_time": {
+        "output_invariant_of_repeat": "yes", 
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../multiple-devices/alexnet/predict.py", 
+        "run_cmd_out1": "tmp-stdout.tmp", 
+        "run_cmd_out2": "tmp-stderr.tmp", 
+        "run_output_files": [
+          "tmp-ck-timer.json", 
+          "tmp-ck-output.json"
+        ]
+      }
+    },
+    "benchmark-vgg16-9-nodes-start-server": {
+      "ignore_return_code": "yes", 
+      "run_time": {
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../multiple-devices/vgg16/9-nodes/node.py" 
+      }
+    },
+    "benchmark-vgg16-9-nodes": {
+      "ignore_return_code": "yes", 
+      "run_time": {
+        "output_invariant_of_repeat": "yes", 
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../multiple-devices/vgg16/9-nodes/predict.py", 
+        "run_cmd_out1": "tmp-stdout.tmp", 
+        "run_cmd_out2": "tmp-stderr.tmp", 
+        "run_output_files": [
+          "tmp-ck-timer.json", 
+          "tmp-ck-output.json"
+        ]
+      }
+    },
+    "benchmark-vgg16-11-nodes-start-server": {
+      "ignore_return_code": "yes", 
+      "run_time": {
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../multiple-devices/vgg16/11-nodes/node.py" 
+      }
+    },
+    "benchmark-vgg16-11-nodes": {
+      "ignore_return_code": "yes", 
+      "run_time": {
+        "output_invariant_of_repeat": "yes", 
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../multiple-devices/vgg16/11-nodes/predict.py", 
+        "run_cmd_out1": "tmp-stdout.tmp", 
+        "run_cmd_out2": "tmp-stderr.tmp", 
+        "run_output_files": [
+          "tmp-ck-timer.json", 
           "tmp-ck-output.json"
         ]
       }
