@@ -2,12 +2,7 @@
 from model import alexnet
 import numpy as np
 
-import os
-
 def main():
-
-    if os.environ.get('NO_GPU','')=='YES':
-       os.environ['CUDA_VISIBLE_DEVICE']=''
 
     """ Call model construction function and run model multiple times. """
     model = alexnet()
