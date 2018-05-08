@@ -66,13 +66,13 @@ class Node(object):
                 data: Data format or size.
         """
         if self.debug:
-            print '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++'
+            print ('++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
             for k in range(0, len(step), 68):
-                print '+{:^68.68}+'.format(step[k:k + 68])
+                print ('+{:^68.68}+'.format(step[k:k + 68]))
             for k in range(0, len(data), 68):
-                print '+{:^68.68}+'.format(data[k:k + 68])
-            print '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++'
-            print
+                print ('+{:^68.68}+'.format(data[k:k + 68]))
+            print ('++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
+            print ()
 
     def acquire_lock(self):
         self.lock.acquire()
@@ -82,7 +82,7 @@ class Node(object):
 
     def timer(self, interval):
         self.total += interval
-        print '{:s}: {:.3f}'.format(self.name, self.total / self.count)
+        print ('{:s}: {:.3f}'.format(self.name, self.total / self.count))
         self.count += 1
 
     @classmethod
@@ -169,7 +169,7 @@ class Responder(ipc.Responder):
                 node.release_lock()
                 return
 
-            except Exception, e:
+            except Exception as e:
                 node.log('Error', e.message)
         else:
             raise schema.AvroException('unexpected message:', msg.getname())

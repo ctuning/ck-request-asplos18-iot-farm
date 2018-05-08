@@ -185,7 +185,7 @@ class Responder(ipc.Responder):
                 node.release_lock()
                 return
 
-            except Exception, e:
+            except Exception as e:
                 node.log('Error', e.message)
         else:
             raise schema.AvroException('unexpected message:', msg.getname())

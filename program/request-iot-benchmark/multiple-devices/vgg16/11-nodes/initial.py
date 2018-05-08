@@ -16,8 +16,10 @@ import avro.schema as schema
 import numpy as np
 import yaml
 
+import os
+
 # data packet format definition
-PROTOCOL = protocol.parse(open('resource/image.avpr').read())
+PROTOCOL = protocol.parse(open('../avro/image.avpr').read())
 
 
 class Initializer:
@@ -48,7 +50,7 @@ class Initializer:
         if self.count == 0:
             self.start = time.time()
         else:
-            print 'total time: {:.3f} sec'.format((time.time() - self.start) / self.count)
+            print ('total time: {:.3f} sec'.format((time.time() - self.start) / self.count))
         self.count += 1
 
     def node_timer(self, mode, interval):
@@ -60,7 +62,7 @@ class Initializer:
                 interval: A float for time lapse.
         """
         self.node_total += interval
-        print '{:s}: {:.3f}'.format(mode, self.node_total / self.node_count)
+        print ('{:s}: {:.3f}'.format(mode, self.node_total / self.node_count))
         self.node_count += 1
 
     @classmethod
@@ -145,8 +147,8 @@ class Responder(ipc.Responder):
             try:
                 init.timer()
                 return
-            except Exception, e:
-                print 'Error', e.message
+            except Exception as e:
+                print ('Error', e.message)
         else:
             raise schema.AvroException('unexpected message:', msg.getname())
 
@@ -176,8 +178,16 @@ class ThreadedHTTPServer(ThreadingMixIn, HTTPServer):
 
 def main():
     init = Initializer.create_init()
+
     # read ip resources from config file
-    with open('resource/ip') as file:
+    ck_target_path=os.environ.get('CK_TARGET_PATH','')
+    if ck_target_path=='':
+       print ('ERROR: CK target is not specified')
+       exit(1)
+
+    ip_path=os.path.join(ck_target_path, 'ip')
+
+    with open(ip_path) as file:
         address = yaml.safe_load(file)
         address = address['node']
         for addr in address['block12345']:
