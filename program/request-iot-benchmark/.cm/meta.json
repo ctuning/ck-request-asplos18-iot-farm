@@ -85,14 +85,19 @@
     "benchmark-alexnet-farm-5-nodes": {
       "ignore_return_code": "yes", 
       "run_time": {
+        "fine_grain_timer_file": "tmp-ck-timer.json", 
         "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../multiple-devices/alexnet/initial.py", 
+        "run_output_files": [
+          "tmp-ck-timer.json", 
+          "tmp-ck-output.json"
+        ],
         "run_output_files": [
           "tmp-ck-timer.json", 
           "tmp-ck-output.json"
         ]
       }
     },
-    "benchmark-vgg16-9-nodes-start-server": {
+    "benchmark-vgg16-farm-9-nodes-start-server": {
       "ignore_return_code": "yes", 
       "run_time": {
         "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../multiple-devices/vgg16/9-nodes/node.py",
@@ -102,9 +107,10 @@
         ]
       }
     },
-    "benchmark-vgg16-9-nodes": {
+    "benchmark-vgg16-farm-9-nodes": {
       "ignore_return_code": "yes", 
       "run_time": {
+        "fine_grain_timer_file": "tmp-ck-timer.json", 
         "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../multiple-devices/vgg16/9-nodes/initial.py", 
         "run_output_files": [
           "tmp-ck-timer.json", 
@@ -112,7 +118,7 @@
         ]
       }
     },
-    "benchmark-vgg16-11-nodes-start-server": {
+    "benchmark-vgg16-farm-11-nodes-start-server": {
       "ignore_return_code": "yes", 
       "run_time": {
         "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../multiple-devices/vgg16/11-nodes/node.py",
@@ -122,9 +128,10 @@
         ]
       }
     },
-    "benchmark-vgg16-11-nodes": {
+    "benchmark-vgg16-farm-11-nodes": {
       "ignore_return_code": "yes", 
       "run_time": {
+        "fine_grain_timer_file": "tmp-ck-timer.json", 
         "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../multiple-devices/vgg16/11-nodes/initial.py", 
         "run_output_files": [
           "tmp-ck-timer.json", 
