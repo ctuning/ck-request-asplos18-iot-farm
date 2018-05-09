@@ -138,9 +138,7 @@ def master():
         frame = frame.astype(dtype=np.uint8)
         Thread(target=send_request, args=(frame.tobytes(), 'block1', 'initial')).start()
 
-        time.sleep(0.03)
-
-    return
+#        time.sleep(0.03)
 
 class Responder(ipc.Responder):
     def __init__(self):
@@ -185,7 +183,6 @@ class Responder(ipc.Responder):
                    x.daemon = True
                    x.start()
 
-                return
             except Exception as e:
                 print ('Error', e.message)
         else:
