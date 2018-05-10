@@ -20,7 +20,16 @@ import os
 
 # data packet format definition
 PROTOCOL = protocol.parse(open('../avro/image.avpr').read())
+server=None
 
+STAT_REPEAT=os.environ.get('STAT_REPEAT','')
+if STAT_REPEAT=='' or STAT_REPEAT==None:
+   STAT_REPEAT=10
+STAT_REPEAT=int(STAT_REPEAT)
+
+tt=0.0
+timers={}
+finish=False
 
 class Initializer:
     """
@@ -46,12 +55,21 @@ class Initializer:
         self.node_count = 1
 
     def timer(self):
+
+        global tt, timers, finish
+
         # count == 0 then means the node just starts, so start the timer.
         if self.count == 0:
             self.start = time.time()
         else:
-            print ('total time: {:.3f} sec'.format((time.time() - self.start) / self.count))
+            tt=(time.time() - self.start) / self.count
+
+            print ('total time: {:.3f} sec'.format(tt))
+
         self.count += 1
+
+        if self.count >= 2*STAT_REPEAT:
+           finish=True
 
     def node_timer(self, mode, interval):
         """
@@ -104,21 +122,23 @@ def send_request(bytestr, mode, tag=''):
     client.close()
     queue.put(addr)
 
-
 def master():
     """
         Master function for real time model inference. A basic while loop
         gets one frame at each time. It appends a frame to deque every time
         and pop the least recent one if the length > maximum.
     """
+
     init = Initializer.create_init()
-    while True:
+
+    for _ in range(STAT_REPEAT):
+        print ('Starting request ...')
         # current frame
         ret, frame = 'unknown', np.random.rand(224, 224, 3) * 255
         frame = frame.astype(dtype=np.uint8)
         Thread(target=send_request, args=(frame.tobytes(), 'block1', 'initial')).start()
-        time.sleep(0.03)
 
+#        time.sleep(0.03)
 
 class Responder(ipc.Responder):
     def __init__(self):
@@ -146,12 +166,27 @@ class Responder(ipc.Responder):
             init = Initializer.create_init()
             try:
                 init.timer()
-                return
+
+                if finish:
+                   import json
+                   import threading
+
+                   global timers
+
+                   timers['execution_time_classify']=tt
+                   timers['execution_time']=tt
+
+                   with open ('tmp-ck-timer.json', 'w') as ftimers:
+                        json.dump(timers, ftimers, indent=2)
+
+                   x = threading.Thread(target=server.shutdown)
+                   x.daemon = True
+                   x.start()
+
             except Exception as e:
                 print ('Error', e.message)
         else:
             raise schema.AvroException('unexpected message:', msg.getname())
-
 
 class Handler(BaseHTTPRequestHandler):
     def do_POST(self):
@@ -177,6 +212,8 @@ class ThreadedHTTPServer(ThreadingMixIn, HTTPServer):
 
 
 def main():
+    global server
+
     init = Initializer.create_init()
 
     # read ip resources from config file
@@ -201,7 +238,6 @@ def main():
     Thread(target=server.serve_forever, args=()).start()
 
     master()
-
 
 if __name__ == '__main__':
     main()
