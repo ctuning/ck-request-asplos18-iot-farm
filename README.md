@@ -245,4 +245,39 @@ $ ck run program:request-iot-benchmark --cmd_key=benchmark-vgg16-farm-11-nodes -
 
 ## Scripts for unified benchmarking for ReQuEST scoreboard
 
-TBD
+You can now perform unified benchmarking and collect statistics in the CK format using scripts in the following CK entry:
+```
+$ cd `ck find script:benchmark-request-iot-farm`
+```
+
+If you plan to benchmark workflow on your host machine (CPU,GPU) while you already added targets for distributed inference, 
+you must also add a "host" target to the CK as following:
+```
+$ ck add machine:host --use_host
+```
+
+You can now benchmark inference on your host as following:
+```
+$ python benchmarking.py --cmd_key=benchmark-alexnet-single-device-cpu
+$ python benchmarking.py --cmd_key=benchmark-alexnet-single-device-gpu
+$ python benchmarking.py --cmd_key=benchmark-vgg16-single-device-cpu
+$ python benchmarking.py --cmd_key=benchmark-vgg16-single-device-gpu
+```
+
+You can also benchmark distributed inference using target machines farm-5, farm-9 and farm-11:
+(you must start servers on each node as described in previous section)
+```
+$ python benchmarking.py --cmd_key=benchmark-alexnet-farm-5-nodes --target=farm-5
+$ python benchmarking.py --cmd_key=benchmark-vgg16-farm-9-nodes --target=farm-9
+$ python benchmarking.py --cmd_key=benchmark-vgg16-farm-11-nodes --target=farm-11
+``
+
+CK will record experimental data in a unified format in the following entries:
+```
+$ ck ls local:experiment:ck-request-asplos18-iot-farm*
+```
+
+You can pack them and send "ckr-local.zip" to ReQuEST organizers as following:
+```
+$ ck zip local:experiment:ck-request-asplos18-iot-farm*
+```
