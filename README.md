@@ -270,7 +270,7 @@ You can also benchmark distributed inference using target machines farm-5, farm-
 $ python benchmarking.py --cmd_key=benchmark-alexnet-farm-5-nodes --target=farm-5
 $ python benchmarking.py --cmd_key=benchmark-vgg16-farm-9-nodes --target=farm-9
 $ python benchmarking.py --cmd_key=benchmark-vgg16-farm-11-nodes --target=farm-11
-``
+```
 
 CK will record experimental data in a unified format in the following entries:
 ```
