@@ -2,7 +2,6 @@ absl-py==0.1.10
 avro==1.8.2
 backports.weakref==1.0.post1
 bleach==1.5.0
-enum34==1.1.6
 funcsigs==1.0.2
 futures==3.1.1
 html5lib==0.9999999
