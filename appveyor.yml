@@ -1,0 +1,38 @@
+build: false
+
+environment:
+  matrix:
+    - PYTHON: C:\Python36-x64
+      PYTHON_VERSION: 3.6
+      TF_PREBUILT_VERSION: 1.5.0
+
+    - PYTHON: C:\Python35-x64
+      PYTHON_VERSION: 3.5
+      TF_PREBUILT_VERSION: 1.5.0
+
+# Python 2.7 is supported by AppVeyor, but there is no pre-built TF package for Windows.
+#
+#    - PYTHON: C:\Python27-x64
+#      PYTHON_VERSION: 2.7
+#      TF_PREBUILT_VERSION: 1.5.0
+
+init:
+    - "ECHO %PYTHON% %PYTHON_VERSION% TF_PREBUILT_VERSION=%TF_PREBUILT_VERSION%"
+    - set PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%
+    - python --version
+
+install:
+    - python -m pip install -U pip
+    - python -m easy_install -U setuptools
+    - python -m pip install ck
+    - ck version
+    - ck pull repo:ck-request-asplos18-iot-farm
+    - echo 0 | ck detect platform.os --update_platform_init
+    - ck detect soft:compiler.python --full_path=%PYTHON%\\python.exe                       # pick the one Travis has set for us in the PATH
+    - ck install package --tags=lib,tensorflow,v%TF_PREBUILT_VERSION%,vcpu,vprebuilt        # install prebuilt tensorflow package
+    - ck install package:lib-keras-2.1.3-request                                            # install prebuilt keras package
+
+test_script:
+    - ck run program:request-iot-benchmark --cmd_key=benchmark-alexnet-single-device-cpu    # AlexNet benchmark
+    - ck run program:request-iot-benchmark --cmd_key=benchmark-vgg16-single-device-cpu      # VGG16 benchmark
+
