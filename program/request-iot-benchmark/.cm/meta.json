@@ -157,8 +157,7 @@
       "local": "yes", 
       "name": "python", 
       "sort": 8, 
-      "tags": "compiler,lang-python,python",
-      "version_to":[3,0,0]
+      "tags": "compiler,lang-python,python"
     }
   }, 
   "run_vars": {
