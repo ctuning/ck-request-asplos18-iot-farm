@@ -1,5 +1,7 @@
 # Collective Knowledge workflow for image classification submitted to [ReQuEST at ASPLOS'18](http://cknowledge.org/request-cfp-asplos2018.html)
 
+Linux/MacOS: [![Travis Build Status](https://travis-ci.org/ctuning/ck-request-asplos18-iot-farm.svg?branch=master)](https://travis-ci.org/ctuning/ck-request-asplos18-iot-farm)
+
 * **Title:** Real-Time Image Recognition Using Collaborative IoT Devices
 * **Authors:** Ramyad Hadidi, Jiashen Cao, Matthew Woodward, Michael S. Ryoo, Hyesoon Kim
 
