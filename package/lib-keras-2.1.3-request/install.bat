@@ -13,10 +13,10 @@ echo.
 echo Downloading and installing ...
 echo.
 
-%CK_PYTHON_PIP_BIN% install --upgrade pip
-%CK_PYTHON_PIP_BIN% install easydict joblib image
+%CK_ENV_COMPILER_PYTHON_FILE% -m pip --upgrade pip
+%CK_ENV_COMPILER_PYTHON_FILE% -m pip install easydict joblib image
 
-%CK_PYTHON_PIP_BIN% install --upgrade -r %PACKAGE_DIR%\requirements.txt -t %PACKAGE_LIB_DIR%
+%CK_ENV_COMPILER_PYTHON_FILE% -m pip install --upgrade -r %PACKAGE_DIR%\requirements.txt -t %PACKAGE_LIB_DIR%
 
 cd /D %INSTALL_DIR%\lib
  echo.
