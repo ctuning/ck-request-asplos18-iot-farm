@@ -48,7 +48,7 @@ The minimal installation requires:
 * Python 2.7 or 3.3+ (limitation is mainly due to unitests)
 * Git command line client.
 
-You can install CK in your local user space as following:
+You can install CK in your local user space as follows:
 
 ```
 $ git clone http://github.com/ctuning/ck
@@ -69,12 +69,12 @@ $ sudo pip install ck
 
 We tested this workflow with TF 1.5. 
 
-You can try to detect and used already installed TF on your machine as following:
+You can try to detect and use already installed TF on your machine as follows:
 ```
 $ ck detect soft --tags=lib,tensorflow
 ```
 
-Alternatively, you can install pre-built CPU version via CK as following 
+Alternatively, you can install pre-built CPU version via CK as follows
 (please select Python 2 if several Python installations are automatically detected by CK):
 ```
 $ ck install package --tags=lib,tensorflow,v1.5.0,vcpu,vprebuilt
@@ -84,13 +84,13 @@ If you plan to use NVIDIA GPU, you can install CUDA version instead:
 $ ck install package --tags=lib,tensorflow,v1.5.0,vcuda,vprebuilt
 ```
 
-If you want to build TF from sources, you can install it different versions as following 
+If you want to build TF from sources, you can install it different versions as follows
 (you may need to limit the number of used processors on platforms with limited memory):
 ```
 $ ck install package --tags=lib,tensorflow,v1.5.0,vsrc --env.CK_HOST_CPU_NUMBER_OF_PROCESSORS=1
 ```
 
-Finally, you can install all available TF packages via CK as following:
+Finally, you can install all available TF packages via CK as follows:
 
 ```
 $ ck install package --tags=lib,tensorflow
@@ -110,7 +110,7 @@ $ ck run program:request-iot-benchmark --cmd_key=benchmark-alexnet-single-device
 
 * VGG16:
 ```
-$ ck run program:request-iot-benchmark --cmd_key="benchmark-vgg16-single-device-cpu
+$ ck run program:request-iot-benchmark --cmd_key=benchmark-vgg16-single-device-cpu
 ```
 ## Benchmarking on a single device (GPU)
 
@@ -125,7 +125,7 @@ $ ck run program:request-iot-benchmark --cmd_key=benchmark-alexnet-single-device
 
 * VGG16:
 ```
-$ ck run program:request-iot-benchmark --cmd_key="benchmark-vgg16-single-device-gpu
+$ ck run program:request-iot-benchmark --cmd_key=benchmark-vgg16-single-device-gpu
 ```
 
 ## Benchmarking on a farm of machines (AlexNet)
@@ -158,25 +158,25 @@ describing all IP addresses of your nodes:
 
 Note that IP of "initial" node is the one where you will run benchmarking.
 
-Now you must register this configuration in the CK with some name such as "farm-5" as following:
+Now you must register this configuration in the CK with some name such as "farm-5" as follows:
 ```
 $ ck add machine:farm-5 --access_type=avro --avro_config=farm-5.json
 ```
 
 Select linux-32 or linux-64 depending on your nodes. 
-You can view all registered configurations of target platforms as following:
+You can view all registered configurations of target platforms as follows:
 ```
 $ ck show machine
 ```
 
 Now must log in to all your nodes and perform all above installation steps
 to install Python, CK, TensorFlow and Keras. Then you can start servers
-on all nodes (apart from "initial") as following:
+on all nodes (apart from "initial") as follows:
 
 ```
 $ ck run program:request-iot-benchmark --cmd_key=benchmark-alexnet-farm-5-nodes-start-server --target=farm-5 
 ```
-Now you can run benchmark for distributed inference as following:
+Now you can run benchmark for distributed inference as follows:
 ```
 $ ck run program:request-iot-benchmark --cmd_key=benchmark-alexnet-farm-5-nodes --target=farm-5 --env.STAT_REPEAT=5
 ```
@@ -216,11 +216,11 @@ For VGG16 with 9 nodes, create ''farm-9.json'' and register farm-9 machine:
 $ ck add machine:farm-9 --access_type=avro --avro_config=farm-9.json
 ```
 
-Now start server on all nodes as following:
+Now start server on all nodes as follows:
 ```
 $ ck run program:request-iot-benchmark --cmd_key=benchmark-vgg16-farm-9-nodes-start-server --target=farm-9 
 ```
-Now you can run benchmark for distributed inference as following:
+Now you can run benchmark for distributed inference as follows:
 ```
 $ ck run program:request-iot-benchmark --cmd_key=benchmark-vgg16-farm-9-nodes --target=farm-9 --env.STAT_REPEAT=5
 ```
@@ -252,11 +252,11 @@ For VGG16 with 11 nodes, create ''farm-11.json'' and register farm-11 machine:
 $ ck add machine:farm-11 --access_type=avro --avro_config=farm-11.json
 ```
 
-Now start server on all nodes as following:
+Now start server on all nodes as follows:
 ```
 $ ck run program:request-iot-benchmark --cmd_key=benchmark-vgg16-farm-11-nodes-start-server --target=farm-11 
 ```
-Now you can run benchmark for distributed inference as following:
+Now you can run benchmark for distributed inference as follows:
 ```
 $ ck run program:request-iot-benchmark --cmd_key=benchmark-vgg16-farm-11-nodes --target=farm-11 --env.STAT_REPEAT=5
 ```
@@ -269,12 +269,12 @@ $ cd `ck find script:benchmark-request-iot-farm`
 ```
 
 If you plan to benchmark workflow on your host machine (CPU,GPU) while you already added targets for distributed inference, 
-you must also add a "host" target to the CK as following:
+you must also add a "host" target to the CK as follows:
 ```
 $ ck add machine:host --use_host
 ```
 
-You can now benchmark inference on your host as following:
+You can now benchmark inference on your host as follows:
 ```
 $ python benchmarking.py --cmd_key=benchmark-alexnet-single-device-cpu
 $ python benchmarking.py --cmd_key=benchmark-alexnet-single-device-gpu
@@ -295,7 +295,7 @@ CK will record experimental data in a unified format in the following entries:
 $ ck ls local:experiment:ck-request-asplos18-iot-farm*
 ```
 
-You can pack them and send "ckr-local.zip" to ReQuEST organizers as following:
+You can pack them and send "ckr-local.zip" to ReQuEST organizers as follows:
 ```
 $ ck zip local:experiment:ck-request-asplos18-iot-farm*
 ```
