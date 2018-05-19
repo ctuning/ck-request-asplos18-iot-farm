@@ -1,6 +1,8 @@
 """ Run model prediction. """
 from model import alexnet
 import numpy as np
+import tensorflow as tf
+import keras
 
 def main():
 
@@ -14,6 +16,14 @@ def main():
        STAT_REPEAT=50
     STAT_REPEAT=int(STAT_REPEAT)
 
+    config = tf.ConfigProto()
+#    config.gpu_options.allow_growth = True
+#    config.gpu_options.allocator_type = 'BFC'
+    config.gpu_options.per_process_gpu_memory_fraction = float(os.getenv('CK_TF_GPU_MEMORY_PERCENT', 33)) / 100.0
+
+    sess = tf.Session(config=config) 
+    keras.backend.set_session(sess)
+
     """ Call model construction function and run model multiple times. """
     model = alexnet()
     test_x = np.random.rand(224, 224, 3)
@@ -21,7 +31,8 @@ def main():
 
     dt=time.time()
     for _ in range(STAT_REPEAT):
-        model.predict(np.array([test_x]))
+        x=model.predict(np.array([test_x]))
+        print (x)
 
     t=(time.time()-dt)/STAT_REPEAT
 
