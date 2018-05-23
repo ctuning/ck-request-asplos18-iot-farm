@@ -14,10 +14,7 @@
       "tags": "compiler,python"
     }
   }, 
-  "end_full_path": {
-    "linux": "lib/keras/__init__.py", 
-    "win": "lib/keras/__init__.py"
-  }, 
+  "end_full_path_universal": "lib$#sep#$keras$#sep#$__init__.py",
   "need_cpu_info": "yes", 
   "only_for_host_os_tags": [
     "linux", 
@@ -33,6 +30,7 @@
   "suggested_path": "keras-prebuilt", 
   "tags": [
     "lib", 
+    "python-package",
     "keras",
     "keras-request",
     "keras-tensorflow", 
