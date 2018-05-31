@@ -15,14 +15,18 @@ on reproducible SW/HW co-design of deep learning (speed, accuracy, energy, costs
 
 * [arXiv ReQuEST goals](https://arxiv.org/abs/1801.06378)
 
+* [ReQuEST submission and reviewing guidelines](http://cknowledge.org/request-cfp-asplos2018.html)
+* [ReQuEST workflows](https://github.com/ctuning/ck-request-asplos18-results)
+* [ReQuEST scoreboard](http://cKnowledge.org/request-results)
+
 ## Continuous testing of this workflow
 
 Linux/MacOS: [![Travis Build Status](https://travis-ci.org/ctuning/ck-request-asplos18-iot-farm.svg?branch=master)](https://travis-ci.org/ctuning/ck-request-asplos18-iot-farm)
 Windows: [![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/omnvph3ivssyq07g/branch/master?svg=true)](https://ci.appveyor.com/project/ens-lg4/ck-request-asplos18-iot-farm/branch/master)
 
-## Artifact check-list (meta-information)
+## Artifact check-list
 
-We use the standard [Artifact Description check-list](http://ctuning.org/ae/submission_extra.html) from systems conferences including CGO, PPoPP, PACT and SuperComputing.
+Details: [Link](http://cTuning.org/ae/submission_extra.html)
 
 * **Algorithm:** image classification
 * **Program:** written scripts in Keras framework
@@ -316,3 +320,13 @@ You can pack them and send "ckr-local.zip" to ReQuEST organizers as follows:
 ```
 $ ck zip local:experiment:ck-request-asplos18-iot-farm*
 ```
+
+## See accepted results on the live scoreboard
+
+[Link](http://cKnowledge.org/request-results)
+
+## Further discussions
+
+* [Collective Knowledge mailing list](http://groups.google.com/group/collective-knowledge)
+* [Collective Knowledge slack](https://collective-knowledge.slack.com)
+* [Artifact evaluation mailing list](http://groups.google.com/group/artifact-evaluation)
