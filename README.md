@@ -1,12 +1,24 @@
 [![logo](https://github.com/ctuning/ck-guide-images/blob/master/logo-powered-by-ck.png)](https://github.com/ctuning/ck)
 
-# Collective Knowledge workflow for image classification submitted to the [ReQuEST tournament at ASPLOS'18](http://cknowledge.org/request-cfp-asplos2018.html)
+This repository contains experimental workflow and all related artifacts 
+as portable, customizable and reusable [Collective Knowledge components](https://github.com/ctuning/ck)
+for image classification from the [1st ReQuEST tournament at ASPLOS'18](http://cknowledge.org/request-cfp-asplos2018.html) 
+on reproducible SW/HW co-design of deep learning (speed, accuracy, energy, costs).
 
-Linux/MacOS: [![Travis Build Status](https://travis-ci.org/ctuning/ck-request-asplos18-iot-farm.svg?branch=master)](https://travis-ci.org/ctuning/ck-request-asplos18-iot-farm)
-Windows: [![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/omnvph3ivssyq07g/branch/master?svg=true)](https://ci.appveyor.com/project/ens-lg4/ck-request-asplos18-iot-farm/branch/master)
+## References
 
 * **Title:** Real-Time Image Recognition Using Collaborative IoT Devices
 * **Authors:** Ramyad Hadidi, Jiashen Cao, Matthew Woodward, Michael S. Ryoo, Hyesoon Kim
+
+* [ACM paper](https://doi.org/10.1145/3229762.3229765)
+* [ACM artifact](https://doi.org/10.1145/3229771)
+
+* [arXiv ReQuEST goals](https://arxiv.org/abs/1801.06378)
+
+## Continuous testing of this workflow
+
+Linux/MacOS: [![Travis Build Status](https://travis-ci.org/ctuning/ck-request-asplos18-iot-farm.svg?branch=master)](https://travis-ci.org/ctuning/ck-request-asplos18-iot-farm)
+Windows: [![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/omnvph3ivssyq07g/branch/master?svg=true)](https://ci.appveyor.com/project/ens-lg4/ck-request-asplos18-iot-farm/branch/master)
 
 ## Artifact check-list (meta-information)
 
