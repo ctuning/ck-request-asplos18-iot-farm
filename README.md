@@ -28,19 +28,19 @@ Windows: [![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/o
 
 Details: [Link](http://cTuning.org/ae/submission_extra.html)
 
-* **Algorithm:** image classification
+* **Algorithm:** image classification (Image recognition models of Alexnet and VGG16)
 * **Program:** written scripts in Keras framework
-* **Compilation:** Python 2.7+ (Python 3.x is not yet supported)
+* **Compilation:** Python 2.7 (Python 3.x is not yet supported)
 * **Transformations:**
 * **Binary:** will be compiled on a target platform
-* **Data set:** ImageNet 2012 validation (50,000 images)
+* **Data set:** Randomly generated images with Numpy (thus will not be able to test accuracy)
 * **Run-time environment:** Ubuntu 16.04 ; Python version >= 2.7; Keras >= 2.1.3 with Tensorflow-gpu >= 1.5 for the backend; (for Raspberry PI systems) Apache Avro >= 1.8.2; (for TX2 GPU) CUDA 8.0 with cuDNN >= 5.1.
 * **Hardware:** Nvidia Jetson TX2 ; up to 11 Raspberry PI 3 with 16GB SD cards; power analyzer;Wifi router (we use 300Mbps, 2.4 GHz 802.11n).
 * **Run-time state:** 
-* **Execution:**
+* **Execution:** Automated via CK command line
 * **Metrics:** Inference per second; static and dynamic energy consumption.
-* **Output:** Scripts output end-to-end latency. User measures power consumption during idle state and inference operations
-* **Experiments:** CK command line
+* **Output:** Scripts output end-to-end latency. User measures power consumption during idle state and inference operations.
+* **Experiments:** Performing inference on different hardware.
 * **How much disk space required (approximately)?** 
 * **How much time is needed to prepare workflow (approximately)?** 
 * **How much time is needed to complete experiments (approximately)?** 
@@ -49,7 +49,7 @@ Details: [Link](http://cTuning.org/ae/submission_extra.html)
 * **CK workflow framework used?** Yes
 * **CK workflow URL:** https://github.com/ctuning/ck-request-asplos18-iot-farm
 * **CK results URL:** https://github.com/ctuning/ck-request-asplos18-results-iot-farm
-* **Original artifact before ReQuEST/CK unification:** https://github.com/parallel-ml/asplos2018-workshop
+* **Original artifact:** https://github.com/parallel-ml/asplos2018-workshop
 
 ## Installation 
 
