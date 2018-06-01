@@ -43,11 +43,13 @@ Details: [Link](http://cTuning.org/ae/submission_extra.html)
 * **Experiments:** CK command line
 * **How much disk space required (approximately)?** 
 * **How much time is needed to prepare workflow (approximately)?** 
-* **How much time is needed to complete experiments (approximately)?**
-* **Collective Knowledge workflow framework used?** Yes
+* **How much time is needed to complete experiments (approximately)?** 
 * **Publicly available?:** Yes
-* **Experimental results:** https://github.com/ctuning/ck-request-asplos18-results-iot-farm
-* **Scoreboard:** http://cKnowledge.org/request-results
+* **Code license(s)?:** 
+* **CK workflow framework used?** Yes
+* **CK workflow URL:** https://github.com/ctuning/ck-request-asplos18-iot-farm
+* **CK results URL:** https://github.com/ctuning/ck-request-asplos18-results-iot-farm
+* **Original artifact before ReQuEST/CK unification:** https://github.com/parallel-ml/asplos2018-workshop
 
 ## Installation 
 
