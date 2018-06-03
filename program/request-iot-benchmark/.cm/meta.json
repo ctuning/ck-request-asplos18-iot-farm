@@ -164,7 +164,8 @@
   }, 
   "tags": [
     "program", 
-    "request", 
+    "request",
+    "request-tournament", 
     "request-asplos18", 
     "iot-farm" 
   ]
