@@ -1,8 +1,8 @@
 [![logo](https://github.com/ctuning/ck-guide-images/blob/master/logo-powered-by-ck.png)](https://github.com/ctuning/ck)
 
-This repository contains experimental workflow and all related artifacts 
+This repository contains experimental workflow and all related artifacts
 as portable, customizable and reusable [Collective Knowledge components](https://github.com/ctuning/ck)
-for image classification from the [1st ReQuEST tournament at ASPLOS'18](http://cknowledge.org/request-cfp-asplos2018.html) 
+for image classification from the [1st ReQuEST tournament at ASPLOS'18](http://cknowledge.org/request-cfp-asplos2018.html)
 on reproducible SW/HW co-design of deep learning (speed, accuracy, energy, costs).
 
 ## References
@@ -36,22 +36,22 @@ Details: [Link](http://cTuning.org/ae/submission_extra.html)
 * **Data set:** Randomly generated images with Numpy (thus will not be able to test accuracy)
 * **Run-time environment:** Ubuntu 16.04 ; Python version >= 2.7; Keras >= 2.1.3 with Tensorflow-gpu >= 1.5 for the backend; (for Raspberry PI systems) Apache Avro >= 1.8.2; (for TX2 GPU) CUDA 8.0 with cuDNN >= 5.1.
 * **Hardware:** Nvidia Jetson TX2 ; up to 11 Raspberry PI 3 with 16GB SD cards; power analyzer;Wifi router (we use 300Mbps, 2.4 GHz 802.11n).
-* **Run-time state:** 
+* **Run-time state:**
 * **Execution:** Automated via CK command line
 * **Metrics:** Inference per second; static and dynamic energy consumption.
 * **Output:** Scripts output end-to-end latency. User measures power consumption during idle state and inference operations.
 * **Experiments:** Performing inference on different hardware.
-* **How much disk space required (approximately)?** 
-* **How much time is needed to prepare workflow (approximately)?** 
-* **How much time is needed to complete experiments (approximately)?** 
+* **How much disk space required (approximately)?** 4GB.
+* **How much time is needed to prepare workflow (approximately)?** 15 hours including installation time.
+* **How much time is needed to complete experiments (approximately)?** 5 hours. 
 * **Publicly available?:** Yes
-* **Code license(s)?:** 
+* **Code license(s)?:**
 * **CK workflow framework used?** Yes
 * **CK workflow URL:** https://github.com/ctuning/ck-request-asplos18-iot-farm
 * **CK results URL:** https://github.com/ctuning/ck-request-asplos18-results-iot-farm
 * **Original artifact:** https://github.com/parallel-ml/asplos2018-workshop
 
-## Installation 
+## Installation
 
 ### Install global prerequisites (Ubuntu and similar)
 
@@ -90,7 +90,7 @@ $ sudo pip install ck
 
 ### Install or detect TensorFlow via CK
 
-We tested this workflow with TF 1.5. 
+We tested this workflow with TF 1.5.
 
 You can try to detect and use already installed TF on your machine as follows:
 ```
@@ -128,7 +128,7 @@ $ ck install package:lib-keras-2.1.3-request
 
 * AlexNet:
 ```
-$ ck run program:request-iot-benchmark --cmd_key=benchmark-alexnet-single-device-cpu 
+$ ck run program:request-iot-benchmark --cmd_key=benchmark-alexnet-single-device-cpu
 ```
 
 * VGG16:
@@ -143,7 +143,7 @@ First test that CUDA-powered GPU is detected by CK:
 
 * AlexNet:
 ```
-$ ck run program:request-iot-benchmark --cmd_key=benchmark-alexnet-single-device-gpu 
+$ ck run program:request-iot-benchmark --cmd_key=benchmark-alexnet-single-device-gpu
 ```
 
 * VGG16:
@@ -153,10 +153,10 @@ $ ck run program:request-iot-benchmark --cmd_key=benchmark-vgg16-single-device-g
 
 ## Benchmarking on a farm of machines (AlexNet)
 
-First you need to describe configuration of your farm via CK. 
+First you need to describe configuration of your farm via CK.
 
 For example, for 5 device configuration for AlexNet,
-prepare JSON file with any name such as '''farm-5.json''' 
+prepare JSON file with any name such as '''farm-5.json'''
 describing all IP addresses of your nodes:
 
 ```
@@ -186,7 +186,7 @@ Now you must register this configuration in the CK with some name such as "farm-
 $ ck add machine:farm-5 --access_type=avro --avro_config=farm-5.json
 ```
 
-Select linux-32 or linux-64 depending on your nodes. 
+Select linux-32 or linux-64 depending on your nodes.
 You can view all registered configurations of target platforms as follows:
 ```
 $ ck show machine
@@ -197,7 +197,7 @@ to install Python, CK, TensorFlow and Keras. Then you can start servers
 on all nodes (apart from "initial") as follows:
 
 ```
-$ ck run program:request-iot-benchmark --cmd_key=benchmark-alexnet-farm-5-nodes-start-server --target=farm-5 
+$ ck run program:request-iot-benchmark --cmd_key=benchmark-alexnet-farm-5-nodes-start-server --target=farm-5
 ```
 Now you can run benchmark for distributed inference as follows:
 ```
@@ -241,7 +241,7 @@ $ ck add machine:farm-9 --access_type=avro --avro_config=farm-9.json
 
 Now start server on all nodes as follows:
 ```
-$ ck run program:request-iot-benchmark --cmd_key=benchmark-vgg16-farm-9-nodes-start-server --target=farm-9 
+$ ck run program:request-iot-benchmark --cmd_key=benchmark-vgg16-farm-9-nodes-start-server --target=farm-9
 ```
 Now you can run benchmark for distributed inference as follows:
 ```
@@ -277,7 +277,7 @@ $ ck add machine:farm-11 --access_type=avro --avro_config=farm-11.json
 
 Now start server on all nodes as follows:
 ```
-$ ck run program:request-iot-benchmark --cmd_key=benchmark-vgg16-farm-11-nodes-start-server --target=farm-11 
+$ ck run program:request-iot-benchmark --cmd_key=benchmark-vgg16-farm-11-nodes-start-server --target=farm-11
 ```
 Now you can run benchmark for distributed inference as follows:
 ```
@@ -291,7 +291,7 @@ You can now perform unified benchmarking and collect statistics in the CK format
 $ cd `ck find script:benchmark-request-iot-farm`
 ```
 
-If you plan to benchmark workflow on your host machine (CPU,GPU) while you already added targets for distributed inference, 
+If you plan to benchmark workflow on your host machine (CPU,GPU) while you already added targets for distributed inference,
 you must also add a "host" target to the CK as follows:
 ```
 $ ck add machine:host --use_host
