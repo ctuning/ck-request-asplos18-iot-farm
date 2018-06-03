@@ -1,1 +1,30 @@
-{}
+{
+  "affiliations": {
+    "1": {
+      "name": "Georgia Institute of Technology"
+    } 
+  }, 
+  "authors": [
+    {
+      "affiliation": "1", 
+      "name": "7448882fe0671902"
+    },
+    {
+      "affiliation": "1", 
+      "name": "8e07754d269e4ec4" 
+    },
+    {
+      "affiliation": "1", 
+      "name": "e87ff8fc47b5a632" 
+    },
+    {
+      "affiliation": "", 
+      "name": "d744caaebb587585" 
+    },
+    {
+      "affiliation": "1", 
+      "name": "08a323a34c888bb7" 
+    }
+  ], 
+ "title":"Real-Time Image Recognition Using Collaborative IoT Devices"
+}
