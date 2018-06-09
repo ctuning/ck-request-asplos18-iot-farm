@@ -28,7 +28,7 @@ Windows: [![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/o
 
 Details: [Link](http://cTuning.org/ae/submission_extra.html)
 
-* **Algorithm:** image classification (Image recognition models of Alexnet and VGG16)
+* **Algorithm:** image classification with Alexnet and VGG16
 * **Program:** written scripts in Keras framework
 * **Compilation:** Python 2.7 (Python 3.x is not yet supported)
 * **Transformations:**

@@ -98,17 +98,11 @@
 \renewcommand{\shortauthors}{}
 \renewcommand{\shorttitle}{}
 
-\maketitle
-
-
-%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 \begin{abstract}
-%
-Internet of things (IoT) devices capture and create various forms of sensor data such as images and videos. However, such resource-constrained devices lack the capability to efficiently process data in a timely and real-time manner. Therefore, IoT systems strongly rely on a powerful server (either local or on the cloud) to extract useful information from data. In addition, during communication with servers, unprocessed, sensitive, and private data is transmitted throughout the Internet, a serious vulnerability. What if we were able to harvest the aggregated computational power of already existing IoT devices in our system to locally process this data? In this artifact, we utilize Musical Chair~\cite{musical-chair}, which enables efficient, localized, and dynamic real-time recognition by harvesting the aggregated computational power of these resource-constrained IoT devices. We apply Musical chair to two well-known image recognition models, AlexNet and VGG16, and implement them on a network of Raspberry PIs (up to 11). We compare inference per second and energy per inference of our systems with Tegra TX2, an embedded low-power platform with a six-core CPU and a GPU. We demonstrate that the collaboration of IoT devices, enabled by Musical Chair, achieves similar real-time performance without the extra costs of maintaining a server. 
-%
+\input{paper_abstract}
 \end{abstract}
-%\vspace{-30pt}
-%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+\maketitle
 
 \section{Extended Abstract}
 
