@@ -1,34 +1,39 @@
 {
   "affiliations": {
     "1": {
-      "name": "Georgia Institute of Technology"
+      "name": "Georgia Institute of Technology, USA"
     }
-  },
+  }, 
   "authors": [
     {
-      "affiliation": "1",
+      "affiliation": "1", 
+      "email_address": "rhadidi@gatech.edu", 
       "name": "7448882fe0671902"
-    },
+    }, 
     {
-      "affiliation": "1",
+      "affiliation": "1", 
+      "email_address": "jcao62@gatech.edu", 
       "name": "8e07754d269e4ec4"
-    },
+    }, 
     {
-      "affiliation": "1",
+      "affiliation": "1", 
+      "email_address": "mwoodward@gatech.edu", 
       "name": "e87ff8fc47b5a632"
-    },
+    }, 
     {
-      "affiliation": "",
+      "affiliation": "", 
+      "email_address": "mryoo@egovid.com", 
       "name": "d744caaebb587585"
-    },
+    }, 
     {
-      "affiliation": "1",
+      "affiliation": "1", 
+      "email_address": "hyesoon@cc.gatech.edu", 
       "name": "08a323a34c888bb7"
     }
-  ],
+  ], 
   "tags": [
-    "request-tournament",
+    "request-tournament", 
     "request-asplos18"
-  ],
+  ], 
   "title": "Real-Time Image Recognition Using Collaborative IoT Devices"
 }

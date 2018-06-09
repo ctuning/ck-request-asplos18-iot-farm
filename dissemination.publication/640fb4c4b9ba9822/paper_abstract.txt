@@ -10,7 +10,7 @@ throughout the Internet, a serious vulnerability. What if we
 were able to harvest the aggregated computational power
 of already existing IoT devices in our system to locally
 process this data? In this artifact, we utilize Musical
-Chair~\cite{musical-chair}, which enables efficient,
+Chair, which enables efficient,
 localized, and dynamic real-time recognition by harvesting the
 aggregated computational power of these resource-constrained
 IoT devices. We apply Musical chair to two well-known image
