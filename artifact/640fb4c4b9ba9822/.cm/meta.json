@@ -1,31 +1,34 @@
 {
   "acm_badges": {
-    "available": "yes",
-    "functional": "yes",
-    "replicated": "yes",
-    "reproduced": "",
+    "available": "yes", 
+    "functional": "yes", 
+    "replicated": "yes", 
+    "reproduced": "", 
     "reusable": "yes"
-  },
-  "artifact_doi": "https://doi.org/10.1145/3229771",
-  "ck_repo_results":"ck-request-asplos18-results-iot-farm",
-  "ck_results": "https://github.com/ctuning/ck-request-asplos18-results-iot-farm",
-  "ck_workflow": "https://github.com/ctuning/ck-request-asplos18-iot-farm",
-  "dois": [],
-  "html": "",
-  "original_repo": "https://github.com/parallel-ml/asplos2018-workshop",
-  "paper_doi": "https://doi.org/10.1145/3229762.3229765",
+  }, 
+  "artifact_doi": "https://doi.org/10.1145/3229771", 
+  "ck_repo_results": "ck-request-asplos18-results-iot-farm", 
+  "ck_results": "https://github.com/ctuning/ck-request-asplos18-results-iot-farm", 
+  "ck_workflow": "https://github.com/ctuning/ck-request-asplos18-iot-farm", 
+  "copyright_holder_name": "Georgia Institute of Technology", 
+  "copyright_holder_year": "2018", 
+  "dois": [], 
+  "html": "", 
+  "license": "authors' code is available under Apache 2.0 license; CK workflow is available under BSD 3-clause license", 
+  "original_repo": "https://github.com/parallel-ml/asplos2018-workshop", 
+  "paper_doi": "https://doi.org/10.1145/3229762.3229765", 
   "repos": [
     {
-      "name": "CK workflow",
+      "name": "CK workflow", 
       "url": "https://github.com/ctuning/ck-request-asplos18-iot-farm"
-    },
+    }, 
     {
-      "name": "CK results",
+      "name": "CK results", 
       "url": "https://github.com/ctuning/ck-request-asplos18-results-iot-farm"
     }
-  ],
+  ], 
   "tags": [
-    "request-tournament",
+    "request-tournament", 
     "request-asplos18"
   ]
 }

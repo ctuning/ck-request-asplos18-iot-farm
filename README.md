@@ -45,7 +45,7 @@ Details: [Link](http://cTuning.org/ae/submission_extra.html)
 * **How much time is needed to prepare workflow (approximately)?** 15 hours including installation time.
 * **How much time is needed to complete experiments (approximately)?** 5 hours. 
 * **Publicly available?:** Yes
-* **Code license(s)?:**
+* **Code license(s)?:** Apache 2.0
 * **CK workflow framework used?** Yes
 * **CK workflow URL:** https://github.com/ctuning/ck-request-asplos18-iot-farm
 * **CK results URL:** https://github.com/ctuning/ck-request-asplos18-results-iot-farm
