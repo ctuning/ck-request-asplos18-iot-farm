@@ -88,6 +88,19 @@ $ sudo pip install ck
 ### Install this CK repository with all dependencies (other CK repos to reuse artifacts)
 ```$ ck pull repo:ck-request-asplos18-iot-farm```
 
+### Install this CK workflow from the ACM Digital Library snapshot
+
+It is possible to install and test the snapshot of this workflow 
+from the ACM Digital Library without interfering with your current CK installation.
+Download related file "request-asplos18-artifact-?-ck-workflow.zip"
+to a temporary directory, unzip it and then execute the following commands:
+```
+$ . ./prepare_virtual_ck.sh
+$ . ./start_virtual_ck.sh
+```
+All CK repositories will be installed in your current directory.
+You can now proceed with further evaluation as described below.
+
 ### Install or detect TensorFlow via CK
 
 We tested this workflow with TF 1.5.
