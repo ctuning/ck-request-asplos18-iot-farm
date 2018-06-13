@@ -644,11 +644,12 @@ to install Python, CK, TensorFlow and Keras. Then you can start servers
 on all nodes (apart from "initial") as follows:
 
 \begin{verbatim}
-$ ck run program:request-iot-benchmark --cmd_key=benchmark-alexnet-farm-5-nodes-start-server --target=farm-5 
+$ ck run program:request-iot-benchmark --cmd_key=benchmark-alexnet-farm-5-nodes-start-server \
+    --target=farm-5 
 \end{verbatim}
 Now you can run benchmark for distributed inference as follows:
 \begin{verbatim}
-$ ck run program:request-iot-benchmark --cmd_key=benchmark-alexnet-farm-5-nodes --target=farm-5
+$ ck run program:request-iot-benchmark --cmd_key=benchmark-alexnet-farm-5-nodes --target=farm-5 \
    --env.STAT_REPEAT=5
 \end{verbatim}
 
@@ -689,11 +690,12 @@ $ ck add machine:farm-9 --access_type=avro --avro_config=farm-9.json
 
 Now start server on all nodes as follows:
 \begin{verbatim}
-$ ck run program:request-iot-benchmark --cmd_key=benchmark-vgg16-farm-9-nodes-start-server --target=farm-9 
+$ ck run program:request-iot-benchmark --cmd_key=benchmark-vgg16-farm-9-nodes-start-server \
+     --target=farm-9 
 \end{verbatim}
 Now you can run benchmark for distributed inference as follows:
 \begin{verbatim}
-$ ck run program:request-iot-benchmark --cmd_key=benchmark-vgg16-farm-9-nodes --target=farm-9
+$ ck run program:request-iot-benchmark --cmd_key=benchmark-vgg16-farm-9-nodes --target=farm-9 \
     --env.STAT_REPEAT=5
 \end{verbatim}
 
@@ -708,7 +710,8 @@ For VGG16 with 11 nodes, create ''farm-11.json'' and register farm-11 machine:
             "192.168.1.8"
         ],
         "block12345": [
-            "192.168.1.3","192.168.1.4","192.168.1.5","192.168.1.6","192.168.1.7","192.168.1.9","192.168.1.10"
+            "192.168.1.3","192.168.1.4","192.168.1.5","192.168.1.6",
+            "192.168.1.7","192.168.1.9","192.168.1.10"
         ],
         "fc1": [
             "192.168.1.11", "192.168.1.13"
@@ -726,12 +729,13 @@ $ ck add machine:farm-11 --access_type=avro --avro_config=farm-11.json
 
 Now start server on all nodes as follows:
 \begin{verbatim}
-$ ck run program:request-iot-benchmark --cmd_key=benchmark-vgg16-farm-11-nodes-start-server --target=farm-11 
+$ ck run program:request-iot-benchmark --cmd_key=benchmark-vgg16-farm-11-nodes-start-server \
+    --target=farm-11 
 \end{verbatim}
 Now you can run benchmark for distributed inference as follows:
 \begin{verbatim}
-$ ck run program:request-iot-benchmark --cmd_key=benchmark-vgg16-farm-11-nodes --target=farm-11
-   --env.STAT_REPEAT=5
+$ ck run program:request-iot-benchmark --cmd_key=benchmark-vgg16-farm-11-nodes --target=farm-11 \
+    --env.STAT_REPEAT=5
 \end{verbatim}
 
 \subsubsection{Scripts for unified benchmarking for ReQuEST scoreboard}
