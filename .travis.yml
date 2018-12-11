@@ -19,8 +19,8 @@ matrix:
         - os: osx
           osx_image: xcode9.2
           language: generic
-          python:   3.7
-          env:      WANTED_PYTHON_VERSION=3.7 TF_PREBUILT_VERSION=1.5.0
+          python:   3.6
+          env:      WANTED_PYTHON_VERSION=3.6 TF_PREBUILT_VERSION=1.5.0
 
 before_install:
     - |
@@ -32,8 +32,8 @@ before_install:
                 export PATH=/usr/local/opt/python\@2/bin:$PATH
                 export PYTHON_FOR_CK=python
             else
-                brew reinstall python                                           # install and link python3 and pip3 to /usr/local/bin
-                export PATH=/usr/local/opt/python/bin:$PATH
+                brew reinstall python\@3.6                                      # install and link python3 and pip3 to /usr/local/bin
+                export PATH=/usr/local/opt/python\@3.6/bin:$PATH
                 export PYTHON_FOR_CK=python3
             fi
 
