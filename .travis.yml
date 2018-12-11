@@ -17,8 +17,8 @@ matrix:
           env:      WANTED_PYTHON_VERSION=2.7 TF_PREBUILT_VERSION=1.5.0
         - os: osx
           language: generic
-          python:   3.6
-          env:      WANTED_PYTHON_VERSION=3.6 TF_PREBUILT_VERSION=1.5.0
+          python:   3.7
+          env:      WANTED_PYTHON_VERSION=3.7 TF_PREBUILT_VERSION=1.5.0
 
 before_install:
     - |
@@ -27,34 +27,38 @@ before_install:
 
             if [ "$WANTED_PYTHON_VERSION" == "2.7" ]; then
                 brew reinstall python\@2 || brew link --overwrite python\@2     # install and link python2 and pip2 to /usr/local/bin
+                export PATH=/usr/local/opt/python\@2/bin:$PATH
+                export PYTHON_FOR_CK=python
             else
                 brew reinstall python                                           # install and link python3 and pip3 to /usr/local/bin
+                export PATH=/usr/local/opt/python/bin:$PATH
+                export PYTHON_FOR_CK=python3
             fi
-            export PATH=/usr/local/opt/python/libexec/bin:$PATH
 
-            export CK_PLATFORM_INDEX=2                                          # used later by CK
+            export CK_PLATFORM_NAME="generic-macos "                            # used later by CK (note the trailing space to make the choice unique)
         else
             sudo apt-get update -qq
             sudo apt-get install python-pip
             export WANTED_PYTHON_VERSION=$TRAVIS_PYTHON_VERSION                 # since Python is supported in Linux, get it from Travis
-            export CK_PLATFORM_INDEX=1                                          # used later by CK
+            export CK_PLATFORM_NAME="generic-linux "                            # used later by CK (note the trailing space to make the choice unique)
+            export PYTHON_FOR_CK=python
         fi
 
 install:
     - CWD=`pwd`
     - REPO_NAME=`basename $CWD`
     - echo "os=${TRAVIS_OS_NAME}, python=${WANTED_PYTHON_VERSION}, TF_prebuilt_version=${TF_PREBUILT_VERSION}"
-    - which python
-    - python --version
-    - python -m pip install --ignore-installed --verbose pip setuptools                         # make sure pip is also up to date no matter what
-    - python -m pip install ck                                                                  # CK kernel itself
+    - which ${PYTHON_FOR_CK}
+    - ${PYTHON_FOR_CK} --version
+    - ${PYTHON_FOR_CK} -m pip install --ignore-installed --verbose pip setuptools               # make sure pip is also up to date no matter what
+    - ${PYTHON_FOR_CK} -m pip install ck                                                        # CK kernel itself
     - ck pull repo:${REPO_NAME}                                                                 # ...also trigger pulling dependent repositories
-    - echo $CK_PLATFORM_INDEX | ck detect platform.os --update_platform_init                    # set the platform to generic-linux (1) or generic-macos (2)
-    -       ck detect soft:compiler.python --full_path=`which python`                           # pick the one Travis has set for us in the PATH
+    - echo "$CK_PLATFORM_NAME" | ck detect platform.os --update_platform_init           # set the platform to generic-linux (1) or generic-macos (2)
+    - echo | ck detect soft:compiler.python --default_selection="$WANTED_PYTHON_VERSION" --first_match
     -       ck install package --tags=lib,tensorflow,v${TF_PREBUILT_VERSION},vcpu,vprebuilt     # install prebuilt tensorflow package
     -       ck install package:lib-keras-2.1.3-request                                          # install prebuilt keras package
 
 script:
-    - ck run program:request-iot-benchmark --cmd_key=benchmark-alexnet-single-device-cpu        # AlexNet benchmark
-    - ck run program:request-iot-benchmark --cmd_key=benchmark-vgg16-single-device-cpu          # VGG16 benchmark
+    - ck run program:request-iot-benchmark --cmd_key=benchmark-alexnet-single-device-cpu --treat_return_code_as_exit_code       # AlexNet benchmark
+    - ck run program:request-iot-benchmark --cmd_key=benchmark-vgg16-single-device-cpu --treat_return_code_as_exit_code         # VGG16 benchmark
 
